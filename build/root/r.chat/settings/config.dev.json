@@ -1,0 +1,10 @@
+{
+  "debug": true,
+  "default_host": "localhost",
+  "default_port": "8080",
+  "log_path": null,
+  "led_control_path": null,
+  "dhcp_lease_file": null,
+  "redirect_stdout": false,
+  "users_class": "SampleUser"
+}

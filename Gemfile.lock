@@ -1,0 +1,31 @@
+GIT
+  remote: git://github.com/awilliams/em-websocket.git
+  revision: 1b4d3bf63df1cffced9938186093635219443fc4
+  specs:
+    em-websocket (0.3.7)
+      eventmachine (>= 0.12.9)
+
+GIT
+  remote: git://github.com/awilliams/eventmachine.git
+  revision: d0316786774576906850738e641a144bbb1fe423
+  specs:
+    eventmachine (1.0.0.beta.4)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    coderay (1.0.5)
+    method_source (0.7.0)
+    pry (0.9.8.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.7)
+      slop (>= 2.4.4, < 3)
+    slop (2.4.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  em-websocket!
+  eventmachine!
+  pry

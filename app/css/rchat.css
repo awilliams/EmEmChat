@@ -1,0 +1,93 @@
+#home, #user {
+  background-color: black;
+}
+#messages_list li.rchat {
+  font-size: .9em;
+  font-weight: bold;
+  color: #E33100;
+}
+li.rchat {
+  border: none;
+}
+li.rchat h1 {
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #555555;
+  padding-bottom: 10px;
+  float: right;
+}
+li.rchat pre {
+  /*opacity: 0;*/
+  margin: 0 auto;
+}
+#asciititle {
+  padding-bottom: 25px;
+}
+
+li.rchat span.icon {
+  font-size: 3.5em !important;
+}
+li.rchat pre.bottomborder {
+  border-bottom: 1px solid #E33100;
+}
+#input_wrapper {
+  position: absolute;
+  bottom: 47px;
+  border-top: 1px solid black;
+}
+
+#input_wrapper input {
+  font-size: 1.5em;
+  width: 100%;
+}
+
+#messages_list li.message {
+  color: #f4f4f4;
+  border-bottom: none;
+}
+
+#messages_list li.switch {
+  border-top: 1px inset #E33100;
+}
+
+#users_list li {
+  border-bottom: 1px inset #E33100;
+}
+
+#messages_list li, #users_list li {
+  background-color: #000000;
+  color: #4b4b4b;
+}
+
+#messages_list li.odd {
+  background-color: #101010;
+}
+
+#messages_list li.user_msg {
+  border: none;
+  font-size: .8em;
+}
+
+#messages_list li span.icon {
+  /* icon */
+  float: none;
+}
+
+#messages_list li span.bubble {
+  font-size: 8pt;
+}
+
+#users_list span.online {
+  color: white;
+}
+
+#users_list span.offline {
+  color: black;
+}
+
+#users_list li.self span.icon {
+  color: #E33100;
+}
+
+#users_list li.other span.icon {
+  color: white;
+}

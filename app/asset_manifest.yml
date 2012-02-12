@@ -1,0 +1,21 @@
+javascript:
+ - lib/lungo.js/lib/QuoJS.js
+ - lib/lungo.js/lib/iscroll-lite.js
+ - lib/lungo.js/lungo-1.1.js
+ - lib/lungo.js/lungo.sugar.growl.js
+ - lib/websocket/swfobject.js
+ - lib/websocket/FABridge.js
+ - lib/websocket/web_socket.js
+ - js/app.js
+ - js/data.js
+ - js/view.js
+ - js/services.js
+ - js/events.js
+
+stylesheet:
+ - lib/lungo.js/lungo-1.1.min.css
+ - lib/lungo.js/lungo.theme.default.css
+ - lib/lungo.js/lungo.sugar.growl.css
+ - css/rchat.css
+
+web_socket_swf: lib/websocket/WebSocketMain.swf
