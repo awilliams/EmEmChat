@@ -1,4 +1,4 @@
-# EmEmChat = Embeded EventMachine Chat #
+# EmEmChat = Embedded EventMachine Chat #
 
 EmEmChat is a server written in Ruby using EventMachine and Em-Websocket, and a client written in HTML/Javascript using Lungo.js. The entire thing can be run off a router using OpenWRT.
 
