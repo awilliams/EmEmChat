@@ -2,7 +2,7 @@
   "debug": false,
   "default_host": "192.168.1.1",
   "default_port": "8080",
-  "log_path": "/tmp/rchat.log",
+  "log_path": "/tmp/EmEmChat.log",
   "led_control_path": "/sys/class/leds/adsl-fail/brightness",
   "dhcp_lease_file": "/tmp/dhcp.leases",
   "redirect_stdout": true,
