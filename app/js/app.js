@@ -11,7 +11,7 @@ var App = (function(lng, undefined) {
         is_local: is_local
     });
 
-    if(!lng.App.get('debug') && document.location.hostname !=  lng.App.get('url')) {
+    if(!lng.App.get('debug') && document.location.hostname.toLowerCase() !=  lng.App.get('url')) {
       document.location = 'http://' + lng.App.get('url');
     }
 
