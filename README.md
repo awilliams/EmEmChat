@@ -2,7 +2,7 @@
 
 EmEmChat is a server written in Ruby using EventMachine and Em-Websocket, and a client written in HTML/Javascript using Lungo.js. The entire thing can be run off a router using OpenWRT.
 
-#### Usage
+### See [ruby-openwrt](https://github.com/awilliams/ruby-openwrt) for more info on embedding EmEmChat in a router.
 
 **Locally**
 
@@ -11,9 +11,7 @@ EmEmChat is a server written in Ruby using EventMachine and Em-Websocket, and a 
  * `bundle exec ruby -I . server.rb dev`
  * Open app/index.html from a websocket able browser (newer Chrome, Firefox, ...)
 
-**On a router**
-
-See [ruby-openwrt](https://github.com/awilliams/ruby-openwrt) for more info on embedding EmEmChat in a router.
+**Router**
 
   * `ruby -I . server.rb`
 
