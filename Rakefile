@@ -1,43 +1,44 @@
 require 'rake'
 require 'yaml'
-require File.join(Rake.original_dir, 'rchat', 'config')
+require File.join(Rake.original_dir, 'ememchat', 'config')
 require File.join(Rake.original_dir, 'lib', 'index_file')
 
 namespace :build do
 
-  index_template    = File.join(RChat.Config(:paths, :app_dir), 'index.rhtml')
+  index_template    = File.join(EmEmChat.Config(:paths, :app_dir), 'index.rhtml')
   # load all javascript, stylesheets, and web_socket_swf locations
-  asset_manifest    = YAML.load_file(File.join(RChat.Config(:paths, :app_dir), 'asset_manifest.yml'))
+  asset_manifest    = YAML.load_file(File.join(EmEmChat.Config(:paths, :app_dir), 'asset_manifest.yml'))
 
   # absolute paths to assets
-  javascripts       = asset_manifest.fetch("javascript").map { |js| File.join(RChat.Config(:paths, :app_dir), js) }
-  stylesheets       = asset_manifest.fetch("stylesheet").map { |css| File.join(RChat.Config(:paths, :app_dir), css) }
-  web_socket_swf    = File.join(RChat.Config(:paths, :app_dir), asset_manifest.fetch("web_socket_swf"))
+  javascripts       = asset_manifest.fetch("javascript").map { |js| File.join(EmEmChat.Config(:paths, :app_dir), js) }
+  stylesheets       = asset_manifest.fetch("stylesheet").map { |css| File.join(EmEmChat.Config(:paths, :app_dir), css) }
+  web_socket_swf    = File.join(EmEmChat.Config(:paths, :app_dir), asset_manifest.fetch("web_socket_swf"))
 
   # shortcut fnc to make paths to www build dir
   def www_build_dir(*paths)
-    File.join(RChat.Config(:paths, :build_dir), 'www', *paths)
+    File.join(EmEmChat.Config(:paths, :build_dir), 'www', *paths)
   end
   # packaged asset paths
-  packaged_js_file        = www_build_dir("#{RChat.Config(:name)}.js")
-  packaged_css_file       = www_build_dir("#{RChat.Config(:name)}.css")
+  packaged_js_file        = www_build_dir("#{EmEmChat.Config(:name)}.js")
+  packaged_css_file       = www_build_dir("#{EmEmChat.Config(:name)}.css")
   packaged_web_socket_swf = www_build_dir(File.basename(web_socket_swf))
 
   # server files
   server_files = [
-    File.join(Rake.original_dir, 'rchat.rb'),
+    File.join(Rake.original_dir, 'ememchat.rb'),
     File.join(Rake.original_dir, 'server.rb'),
-  ]  + Dir.glob(File.join(Rake.original_dir, 'rchat', '*.rb')) + Dir.glob(File.join(Rake.original_dir, 'settings', '*.json'))
+  ]  + Dir.glob(File.join(Rake.original_dir, 'ememchat', '*.rb')) + Dir.glob(File.join(Rake.original_dir, 'settings', '*.json'))
   def server_build_dir(*paths)
-    File.join(RChat.Config(:paths, :build_dir), 'root', 'r.chat', *paths)
+    File.join(EmEmChat.Config(:paths, :build_dir), 'server', *paths)
   end
 
   task :clear do
-    exec!("rm -rf #{RChat.Config(:paths, :build_dir)}/*")
+    exec!("rm -rf #{EmEmChat.Config(:paths, :build_dir)}/*")
   end
 
   task :setup do
-    exec!("mkdir -p #{www_build_dir} #{server_build_dir('rchat')} #{server_build_dir('settings')}")
+    # TODO: use rake and fix this
+    exec!("mkdir -p #{www_build_dir} #{server_build_dir('ememchat')} #{server_build_dir('settings')}")
   end
 
   task :reset => [:setup]
@@ -65,13 +66,13 @@ namespace :build do
   namespace :index do
     desc 'Build index.html (local dev)'
     task :local do
-      index = IndexFile.new(index_template, RChat.Config(:name), javascripts, stylesheets, web_socket_swf)
-      index.write(File.join(RChat.Config(:paths, :app_dir), 'index.html'))
+      index = IndexFile.new(index_template, EmEmChat.Config(:name), javascripts, stylesheets, web_socket_swf)
+      index.write(File.join(EmEmChat.Config(:paths, :app_dir), 'index.html'))
     end
 
     desc 'Build index.html (packaged)'
     task :packaged => :setup do
-      index = IndexFile.new(index_template, RChat.Config(:name), "/" + File.basename(packaged_js_file), "/" + File.basename(packaged_css_file), "/" + File.basename(packaged_web_socket_swf))
+      index = IndexFile.new(index_template, EmEmChat.Config(:name), "/" + File.basename(packaged_js_file), "/" + File.basename(packaged_css_file), "/" + File.basename(packaged_web_socket_swf))
       index.write(www_build_dir('index.html'))
     end
   end
@@ -88,7 +89,7 @@ namespace :build do
 
   desc 'Create build tar'
   task :tar do
-    exec!("cd #{RChat.Config(:paths, :build_dir)} && tar -cf rchat_build.tar *")
+    exec!("cd #{EmEmChat.Config(:paths, :build_dir)}/.. && tar -czf #{EmEmChat.Config(:name)}.tar.gz #{File.basename(EmEmChat.Config(:paths, :build_dir))}")
   end
 
 end
@@ -112,7 +113,7 @@ def exec!(cmd)
 end
 
 def compile_js_cmd(output_file, *input_files)
-  (["java -jar #{RChat.Config(:paths, :js_compiler)} --warning_level QUIET",
+  (["java -jar #{EmEmChat.Config(:paths, :js_compiler)} --warning_level QUIET",
     "\t--js_output_file #{output_file}"] +
     input_files.map { |f| "\t--js #{f}" }
   ).join(" \\\n")
@@ -123,7 +124,7 @@ end
 
 def compile_css_cmd(output_file, *input_files)
   ["cat #{input_files.join(" \\\n\t")}",
-   "java -jar #{RChat.Config(:paths, :css_compiler)} --type css --line-break 80 -o #{output_file}"
+   "java -jar #{EmEmChat.Config(:paths, :css_compiler)} --type css --line-break 80 -o #{output_file}"
   ].join("\\\n | ")
 end
 def compile_css!(output_file, *input_files)

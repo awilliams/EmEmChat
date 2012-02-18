@@ -1,6 +1,6 @@
-require 'rchat/user'
+require 'ememchat/user'
 
-module RChat
+module EmEmChat
   class SampleUser
     def initialize(user_class = User)
       @user_class = user_class

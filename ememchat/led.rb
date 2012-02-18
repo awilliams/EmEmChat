@@ -1,9 +1,9 @@
-require 'rchat/config'
+require 'ememchat/config'
 
-module RChat
+module EmEmChat
   module Led
     def self.control_available?
-      !!RChat.Config(:led_control_path)
+      !!EmEmChat.Config(:led_control_path)
     end
 
     def self.on
@@ -44,7 +44,7 @@ module RChat
     end
 
     def self.open_control(method = nil, &block)
-      f = File.open(RChat.Config(:led_control_path), 'r+')
+      f = File.open(EmEmChat.Config(:led_control_path), 'r+')
       f.sync = true
       control = OnOff.new(f)
       method ? control.send(method) : block.call(control)

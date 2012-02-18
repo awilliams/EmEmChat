@@ -1,2 +1,2 @@
-# rouchatter #
-A websocket server written in Ruby using eventmachine and client-side application. The server runs on a router using OpenWrt. Router + Chat = rouchatter
+# EmEmChat = Embeded EventMachine Chat #
+A websocket server written in Ruby using eventmachine and a client-side application. The server can be made to run on a router using OpenWrt.

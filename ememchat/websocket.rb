@@ -1,9 +1,9 @@
 require 'json'
 require 'socket'
 require 'set'
-require 'rchat/config'
+require 'ememchat/config'
 
-module RChat
+module EmEmChat
   class Websocket
 
     @@connected_users = Set.new
@@ -43,7 +43,7 @@ module RChat
     def send(msg)
       json = JSON.fast_generate(msg)
       @ws.send(json)
-      puts "%s %s" % [Time.now, json] if RChat.Config(:debug)
+      puts "%s %s" % [Time.now, json] if EmEmChat.Config(:debug)
     end
 
     def broadcast(msg)
@@ -61,14 +61,14 @@ module RChat
     def on_message(msg)
       if msg[:data] && msg[:data][:message]
         broadcast(Message.message(user.id, msg[:data][:message]))
-        puts "#{user.hostname}:\t#{msg[:data][:message]}" unless RChat.Config(:debug)
+        puts "#{user.hostname}:\t#{msg[:data][:message]}" unless EmEmChat.Config(:debug)
       end
     end
 
     def on_close
       remove_user
       broadcast(Message.leave(user.id))
-      puts "## LEAVE #{user.hostname} (#{user.ip})" unless RChat.Config(:debug)
+      puts "## LEAVE #{user.hostname} (#{user.ip})" unless EmEmChat.Config(:debug)
       is_last_user = @@connected_users.empty?
       @@on_user_leave.each { |block| block.call(is_last_user) }
     end
@@ -81,7 +81,7 @@ module RChat
       send(@@connected_users.map { |u|
         Message.join(u, u == user)
       })
-      puts "## JOIN #{user.hostname} (#{user.ip})" unless RChat.Config(:debug)
+      puts "## JOIN #{user.hostname} (#{user.ip})" unless EmEmChat.Config(:debug)
       @@on_user_join.each { |block| block.call(is_first_user) }
     end
 

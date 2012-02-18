@@ -164,7 +164,7 @@ header .bubble.count{background:#2c2c2d}.bubble.count{background:#91bd09}.growl{
 .notify strong{margin:14px 0 -12px;max-height:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:1.15em;text-transform:uppercase;line-height:12px}
 .notify small{font-size:.9em}#home,#user{background-color:black}#messages_list li.rchat{font-size:.9em;font-weight:bold;color:#e33100}
 li.rchat{border:0}li.rchat h1{text-transform:uppercase;text-shadow:1px 1px 2px #555;padding-bottom:10px;float:right}
-li.rchat pre{margin:0 auto}#asciititle{padding-bottom:25px}li.rchat span.icon{font-size:3.5em!important}
+li.rchat pre{margin:0 auto}#asciititle{padding-bottom:45px}li.rchat span.icon{font-size:3.5em!important}
 li.rchat pre.bottomborder{border-bottom:1px solid #e33100}#input_wrapper{position:absolute;bottom:47px;border-top:1px solid black}
 #input_wrapper input{font-size:1.5em;width:100%}#messages_list li.message{color:#f4f4f4;border-bottom:0}
 #messages_list li.switch{border-top:1px inset #e33100}#users_list li{border-bottom:1px inset #e33100}

@@ -1,6 +1,6 @@
 require 'json'
 
-module RChat
+module EmEmChat
   class User
     attr_reader :id, :mac, :ip, :hostname
     attr_accessor :uid

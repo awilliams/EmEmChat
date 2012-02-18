@@ -1,12 +1,12 @@
-require 'rchat/config'
-require 'rchat/user'
+require 'ememchat/config'
+require 'ememchat/user'
 
-module RChat
+module EmEmChat
   class DhcpUser
 
     LineParser = /\s/
 
-    def initialize(user_class = User, dhcp_leases_path = RChat.Config(:dhcp_leases_path))
+    def initialize(user_class = User, dhcp_leases_path = EmEmChat.Config(:dhcp_leases_path))
       @user_class = user_class
       if File.exists?(dhcp_leases_path)
         @dhcp_leases_file = File.new(dhcp_leases_path, 'r')

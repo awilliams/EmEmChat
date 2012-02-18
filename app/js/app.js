@@ -3,7 +3,7 @@ var App = (function(lng, undefined) {
     var is_local = window.location.host == '';
 
     lng.App.init({
-        url: 'r.chat',
+        url: 'emem.chat',
         ws_host: (is_local ? 'localhost' : '192.168.1.1'),
         ws_port: '8080',
         max_retries: 8,

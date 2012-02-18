@@ -1,6 +1,6 @@
 require 'json'
 
-module RChat
+module EmEmChat
   class Message
     attr_reader :type, :data
 
